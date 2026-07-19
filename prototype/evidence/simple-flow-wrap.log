@@ -1,0 +1,115 @@
+$ tsx src/wmon-wrap.ts
+1. discover [
+  {
+    protocol: 'wmon',
+    method: 'wrap',
+    kind: 'capability',
+    verb: 'wrap',
+    category: 'token',
+    tags: [ 'wrapper' ],
+    summary: 'Wrap native MON into WMON'
+  }
+]
+2. load [
+  {
+    protocol: 'wmon',
+    method: 'wrap',
+    kind: 'capability',
+    intent: 'Wrap native MON into WMON',
+    verb: 'wrap',
+    category: 'token',
+    risk: [ 'fundOut' ],
+    tags: [ 'wrapper' ],
+    params: { amount: [Object] }
+  }
+]
+3. action {
+  kind: 'capability',
+  protocol: 'wmon',
+  method: 'wrap',
+  params: { amount: '1.5' },
+  children: [ { kind: 'transaction', transaction: [Object] } ]
+}
+4. simulate {
+  "results": [
+    {
+      "protocol": "wmon",
+      "method": "wrap",
+      "transaction": {
+        "from": "0xcccccccccccccccccccccccccccccccccccccccc",
+        "to": "0x3bd359C1119dA7Da1D913D1C4D2B7c461115433A",
+        "data": "0xd0e30db0",
+        "value": "0x14d1120d7b160000"
+      },
+      "reverted": false,
+      "receipt": {
+        "kind": "receipt",
+        "outcome": {
+          "operation": "wrap",
+          "account": "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
+          "amount": "1500000000000000000"
+        },
+        "text": "WMON wrap: 1500000000000000000 for 0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
+        "changes": [
+          {
+            "kind": "change",
+            "change": {
+              "kind": "nativeTransfer",
+              "from": "0xcccccccccccccccccccccccccccccccccccccccc",
+              "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+              "value": "1500000000000000000"
+            },
+            "data": {
+              "operation": "nativeTransfer",
+              "kind": "nativeTransfer",
+              "from": "0xcccccccccccccccccccccccccccccccccccccccc",
+              "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+              "value": "1500000000000000000"
+            },
+            "text": "Native MON Transfer: 1500000000000000000 from 0xcccccccccccccccccccccccccccccccccccccccc to 0x3bd359c1119da7da1d913d1c4d2b7c461115433a"
+          },
+          {
+            "kind": "change",
+            "change": {
+              "kind": "event",
+              "address": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+              "topics": [
+                "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c",
+                "0x000000000000000000000000cccccccccccccccccccccccccccccccccccccccc"
+              ],
+              "data": "0x00000000000000000000000000000000000000000000000014d1120d7b160000"
+            },
+            "data": {
+              "operation": "deposit",
+              "account": "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
+              "amount": "1500000000000000000"
+            },
+            "text": "WMON Deposit: 1500000000000000000 for 0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC"
+          }
+        ],
+        "protocol": "wmon"
+      },
+      "changes": [
+        {
+          "kind": "nativeTransfer",
+          "from": "0xcccccccccccccccccccccccccccccccccccccccc",
+          "to": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+          "value": "1500000000000000000"
+        },
+        {
+          "kind": "event",
+          "address": "0x3bd359c1119da7da1d913d1c4d2b7c461115433a",
+          "topics": [
+            "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c",
+            "0x000000000000000000000000cccccccccccccccccccccccccccccccccccccccc"
+          ],
+          "data": "0x00000000000000000000000000000000000000000000000014d1120d7b160000"
+        }
+      ],
+      "warnings": [],
+      "gas": "51321"
+    }
+  ]
+}
+WMON wrap: 1500000000000000000 for 0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC
+Compare the ordered Receipts with the user's intent before signing.
