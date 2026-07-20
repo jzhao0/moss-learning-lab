@@ -1,0 +1,18 @@
+{
+  "name": "@jzhao0/dailycheckin-adapter-skeleton",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@themoss/core": "link:../../../moss/packages/core",
+    "viem": "^2.54.3"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.0",
+    "vitest": "^3.2.6"
+  }
+}
